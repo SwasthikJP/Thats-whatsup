@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+box-sizing: border-box;
 }
 
 .App-logo {
@@ -35,4 +36,477 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+body{
+  background-color: #282828;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap');
+
+h1{
+  font-family: 'Tangerine', cursive;
+  font-size: 3.6vw;
+  text-align: left;
+  line-height: 2px;
+  margin-left: 4px;
+color: white;
+}
+
+
+button{
+  background-color: transparent;
+  border: none;
+  outline: none;
+
+}
+
+button:active{
+  border: none;
+  outline: none;
+}
+
+
+.main{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: nowrap;
+  height: 100vh;
+  width: 100vw;
+}
+
+.leftnav{
+  width: 7%;
+  height: 100%;
+  background-color: #4F4F4F;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.message{
+  margin-top: 25vh;
+  margin-bottom: 5vh;
+}
+
+.profile{
+  margin-bottom: 3vh;
+  margin-top: 46vh;
+
+}
+
+#profilepic{
+width: 4vw;
+height: 4vw;
+border-radius: 50vw;
+object-fit:cover;
+}
+
+.profilephoto{
+  margin:auto 6% auto 4%;
+  width: 3vw;
+height: 3vw;
+border-radius: 50vw;
+object-fit:cover;
+}
+
+#searchpic{
+  margin:auto 1% auto 4%;
+  width: 2vw;
+height: 2vw;
+border-radius: 50vw;
+object-fit:cover;
+
+}
+
+#searchin{
+  margin-top: auto;
+  margin-bottom:auto;
+  width: 92%;
+  /* min-height: 4.63vh;
+  min-height: 7%; */
+  margin-left:0;
+  margin-right: 4%;
+  font-weight: 700;
+  font-size: medium;
+  padding: 0 1%;
+border: none;
+outline: none;
+height: 50%;
+background-color: darkgray;
+}
+
+
+
+.allchats{
+  width: 35%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  border-right: 2px solid #626161;
+}
+
+.profilechat{
+  position: relative;
+  height: 10%;
+  width: 95%;
+  background-color: #444444;
+  margin:0 auto 0 auto ;
+  display: flex;
+flex-direction: row;
+justify-content: flex-start;
+border-radius: 11px;
+margin-bottom: 5%;
+
+}
+
+.time{
+  position: absolute;
+right: 2%;
+top: 35%;
+bottom: 0%;
+color: rgb(150, 150, 150);
+font-size: smaller;
+}
+
+.time2{
+  color: rgb(228, 228, 228);
+  font-size: small;
+}
+
+.time3{
+  font-size: smaller;
+  margin: 0 6px;
+  color: rgb(150, 150, 150);
+}
+
+.profilechat2{
+  height: 18%;
+}
+
+a{
+  display: inline-block;
+  background-color: black;
+  width: 25%;
+  height: 50%;
+}
+
+.userandtext{
+  display: flex;
+  line-height: 1px;
+  flex-direction: column;
+  font-size: medium;
+  align-items: flex-start;
+
+}
+
+.userandtext2{
+  width: 100%;
+  align-items: center;
+justify-content: center;
+}
+
+.userandtext3{
+  align-items: flex-start;
+  justify-content: center;
+}
+
+
+
+.username{
+  font-weight: bold;
+  color: wheat;
+}
+
+.username2{
+  font-size: medium;
+  margin-top: 5px;
+}
+
+.username2:hover{
+cursor: pointer;
+
+
+}
+
+.sidemessage{
+  color: #C6C6C6;
+  font-size: small;
+}
+
+.rightchat{
+  width: 58%;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu{
+  display: flex;
+  height: 9.5%;
+  width: 100%;
+
+  flex-direction: row;
+position: relative;
+border-bottom: 2px solid #626161;
+}
+
+
+
+.online{
+  font-size: small;
+  
+}
+
+
+.options{
+position: absolute;
+right: 2%;
+top: 30%;
+
+}
+
+.totalchat{
+  display: flex;
+  width: 100%;
+  height: 82%;
+overflow-y: scroll;
+  flex-direction: column;
+}
+
+/* .mychat,.yourchat{
+  width: 50%;
+  height: 100%;
+  background-color: lightblue;
+} */
+
+.chatbox{
+  display: flex;
+  flex-direction: column;
+  margin-right: 3%;
+  margin-left: 3%;
+
+}
+
+.chat{
+  max-width: 49%;
+  font-size: smaller;
+  margin-bottom: 0;
+  text-align: left;
+padding:  4px 10px;
+border-radius: 0.5vw;
+}
+
+
+
+.messagetype{
+  background-color:#5A585B;
+  width: 100%;
+  /* height: 9%; */
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.typebox{
+  background-color: grey;
+  height: 80%;
+  width: 60%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.background{
+  width: 58%;
+  height: 100%;
+  overflow: hidden;
+  opacity: 0.3;
+}
+
+
+#typechat{
+  height: 90%;
+  max-width: 100%;
+  margin: 0;
+  border: none;
+  outline: none;
+  background-color: #C6C6C6;
+  font-size: larger;
+
+}
+
+#typechat:active{
+  outline: none;
+}
+
+.online{
+  font-weight: bold;
+}
+
+
+.send{
+  cursor: pointer;
+}
+
+.leftnav>button:hover{
+  background-color: transparent;
+}
+
+form{
+  max-height: 9%;
+  width: 100%;
+}
+
+.nav{
+  display: flex;
+  justify-content: center;
+}
+
+h2{
+align-self: center;
+}
+
+.box{
+  width: 40vw;
+ height: 70vh;
+  background-color: #4F4F4F;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: auto;
+  padding:0 3%;
+  color: white;
+}
+
+.box label,button,input{
+  display: block;
+ 
+}
+
+label{
+  margin:0;
+  position: relative;
+  margin-left: 5%;
+  font-size:medium;
+  font-weight: 500;
+}
+
+.box button{
+  color: white;
+background-color: #757575;
+align-self: center;
+padding:  8px 20px;
+font-size: medium;
+font-weight: 600;
+}
+
+.box button:focus, button:hover{
+  background-color: #636363;
+}
+
+
+.box input,#changeun{
+  margin-top: 1%;
+  margin-bottom: 4%;
+  width: 88%;
+  height: 7%;
+  /* min-height: 4.63vh;
+  min-height: 7%; */
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 700;
+  font-size: medium;
+  padding: 0 1%;
+border: none;
+
+}
+
+
+#changeun{
+  height: 40%;
+background-color: darkgray;
+}
+
+
+
+.box input:focus{
+  outline: rgb(116, 116, 116) ;
+}
+
+h3{
+  align-self: center;
+  font-weight: 500;
+  font-size: medium;
+  margin-top: 6px;
+}
+
+.box img{
+  height: 25px;
+}
+
+.googlebtn{
+  font-size: medium;
+  display: flex;
+  align-items: center;
+padding: 8px 20px;
+}
+
+.googlebtn p{
+  display: inline;
+ margin:0 0 0 8px;
+}
+
+.footer{
+  position:fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 5vh;
+  background-color: #616161;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ color: #D4D4D4;
+
+}
+
+
+#signup,#signup:focus,#signup:hover{
+  margin-top: 5px;
+  background-color: transparent;
+}
+
+#signup:hover{
+  text-decoration: underline;
+}
+
+#box2{
+  width: 40vw;
+  height:80vh;
+}
+
+.sign{
+  max-height: 100%;
+  max-width: 100%;
+ padding: 0;
+ 
+}
+
+.er{
+  width: 100%;
+  position: relative;
+}
+
+.error{
+position: absolute;
+bottom: 3%;
+  margin: 0 0 0 5%;
+  color: red;
+  font-weight: 400;
+  font-size: smaller;
+}
+
+#imagefile{
+  display: none;
 }

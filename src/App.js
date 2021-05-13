@@ -1,23 +1,59 @@
-import logo from './logo.svg';
+import Home from './components/home'
 import './App.css';
+import Signup from './components/signup';
+import firebase from 'firebase';
+import Signin from './components/signin';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route ,Redirect
+} from 'react-router-dom';
+import {useState, useEffect} from 'react';
+
+firebase.initializeApp({
+  apiKey: "AIzaSyC-v0oNNja7h_CCRMjtOu4qE2VkN_DxqaU",
+  authDomain: "thats-whatsup.firebaseapp.com",
+  projectId: "thats-whatsup",
+  storageBucket: "thats-whatsup.appspot.com",
+  messagingSenderId: "289429766892",
+  appId: "1:289429766892:web:e35f1b7ae81fc77b48dbc9",
+  measurementId: "G-CF3T1QJ1QZ"
+});
 
 function App() {
+const [user,setuser]=useState(null);
+
+useEffect(()=>{
+firebase.auth().onAuthStateChanged((user)=>{
+console.log(user);
+  setuser(user);
+})
+},[]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+   <Router>
+  
+     <Switch>
+      
+       <Route exact path="/">
+     {user? <Redirect to="/home" />:<Signin />} 
+       </Route>
+
+       <Route path="/signup">
+       {user? <Redirect to="/home" />:  <Signup />}
+         </Route>
+
+         <Route path="/home">
+         {user? <Home user={user}/>: <Redirect to="/" />} 
+         </Route>
+
+     </Switch>
+
+   </Router>
+  
+
+
     </div>
   );
 }
