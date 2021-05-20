@@ -38,6 +38,25 @@ box-sizing: border-box;
   }
 }
 
+
+:root{
+  --fs-h1:3rem;
+  --box-width:40vw;
+  --profphoto:3vw;
+  --profpic:4vw;
+  --searchpic:2vw;
+}
+
+@media (max-width: 768px){
+  :root{
+    --fs-h1:2.8rem;
+    --box-width:70vw;
+    --profphoto:7vw;
+    --profpic:9vw;
+    --searchpic:5vw;
+  }
+}
+
 body{
   background-color: #282828;
 }
@@ -46,7 +65,7 @@ body{
 
 h1{
   font-family: 'Tangerine', cursive;
-  font-size: 3.6vw;
+  font-size: var(--fs-h1);
   text-align: left;
   line-height: 2px;
   margin-left: 4px;
@@ -85,6 +104,13 @@ button:active{
 
 }
 
+#mobnav{
+  display: flex;
+  flex-direction: row;
+  height: 10vh;
+  align-items: center;
+}
+
 .message{
   margin-top: 25vh;
   margin-bottom: 5vh;
@@ -97,24 +123,24 @@ button:active{
 }
 
 #profilepic{
-width: 4vw;
-height: 4vw;
+width: var(--profpic);
+height: var(--profpic);
 border-radius: 50vw;
 object-fit:cover;
 }
 
 .profilephoto{
   margin:auto 6% auto 4%;
-  width: 3vw;
-height: 3vw;
+  width: var(--profphoto);
+height:var(--profphoto);
 border-radius: 50vw;
 object-fit:cover;
 }
 
 #searchpic{
   margin:auto 1% auto 4%;
-  width: 2vw;
-height: 2vw;
+  width: var(--searchpic);
+height: var(--searchpic);
 border-radius: 50vw;
 object-fit:cover;
 
@@ -369,7 +395,7 @@ align-self: center;
 }
 
 .box{
-  width: 40vw;
+  width: var(--box-width);
  height: 70vh;
   background-color: #4F4F4F;
   display: flex;
@@ -393,7 +419,7 @@ label{
   font-weight: 500;
 }
 
-.box button{
+.box button,#signup{
   color: white;
 background-color: #757575;
 align-self: center;
@@ -475,6 +501,9 @@ padding: 8px 20px;
 #signup,#signup:focus,#signup:hover{
   margin-top: 5px;
   background-color: transparent;
+  width: 100%;
+  text-decoration: none;
+  padding: 0%;
 }
 
 #signup:hover{
@@ -482,7 +511,7 @@ padding: 8px 20px;
 }
 
 #box2{
-  width: 40vw;
+  width: var(--box-width);
   height:80vh;
 }
 
@@ -510,3 +539,5 @@ bottom: 3%;
 #imagefile{
   display: none;
 }
+
+

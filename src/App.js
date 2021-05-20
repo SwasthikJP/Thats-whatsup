@@ -8,6 +8,7 @@ import {
   Switch,
   Route ,Redirect
 } from 'react-router-dom';
+
 import {useState, useEffect} from 'react';
 
 firebase.initializeApp({
@@ -37,15 +38,15 @@ console.log(user);
      <Switch>
       
        <Route exact path="/">
-     {user? <Redirect to="/home" />:<Signin />} 
+     {user? <Redirect to="/home" push/>:<Signin />} 
        </Route>
 
        <Route path="/signup">
-       {user? <Redirect to="/home" />:  <Signup />}
+       {user? <Redirect to="/home" push />:  <Signup />}
          </Route>
 
          <Route path="/home">
-         {user? <Home user={user}/>: <Redirect to="/" />} 
+         {user? <Home user={user}/>: <Redirect to="/"/>} 
          </Route>
 
      </Switch>

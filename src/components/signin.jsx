@@ -1,5 +1,8 @@
 import { React, useState } from 'react';
-import firebase from 'firebase';
+import {Link} from 'react-router-dom';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+
 
 export default function Signin() {
 
@@ -17,17 +20,16 @@ export default function Signin() {
         if (email.length !== 0) {
 
             if (password.length !== 0) {
-                console.log(email + password )
                 firebase.auth().signInWithEmailAndPassword(email,password)
                 .then(()=>{
                    
                 }).catch((err)=>{
-                    if(err.code.search("user-not-found")!=-1){
+                    if(err.code.search("user-not-found")!==-1){
                         setemailerr("User not found");
                         setinemail(false);
                         setinpass(true);
                     }
-                  else  if(err.code.search("email")!=-1){
+                  else  if(err.code.search("email")!==-1){
                         setemailerr(err.message);
                          setinemail(false)
                          setinpass(true);
@@ -93,7 +95,6 @@ export default function Signin() {
             <div className="box">
                 {/* <form > */}
                 <h2>Signin</h2>
-
                 <label htmlFor="email"> Enter email </label>
                 <input type="text" name="email" id="email" value={email} onChange={(e) => { setmail(e) }} style={{ borderBottom: inemail ? "none" : "solid 2px red" }} />
                 {Boolean(inemail) || <div className="er"><p className="error">{emailerr}</p></div>}
@@ -104,7 +105,8 @@ export default function Signin() {
                 <h3>Or</h3>
                 {/* </ form>  */}
                 <button type="button" className="googlebtn" onClick={googleuser}><img src="https://img.icons8.com/fluent/48/000000/google-logo.png" alt="Google" /> <p>Signin with Google</p></button>
-                <button type="button" id="signup">Don’t have an account? Signup</button>
+                <button id="signup" type="button">      <Link to="/signup" id="signup">Don’t have an account? Signup</Link> </button>
+    
             </div>
         </form>
         <div className="footer">

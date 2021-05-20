@@ -1,6 +1,7 @@
 import {React,useState} from 'react';
-import firebase from 'firebase';
-
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import {Link} from 'react-router-dom';
 
 
 export default function Signup(){
@@ -33,12 +34,10 @@ const [emailerr,setemailerr]=useState("");
     if(email.length!==0){
    
     if(password===confpass&&password.length!==0){
-        console.log(email+password+confpass)
         firebase.auth().createUserWithEmailAndPassword(email,password)
         .then(()=>{
            
         }).catch((err)=>{
-            console.log(err.message)
 
                 setinemail(false);
                 setemailerr(err.message)
@@ -98,7 +97,7 @@ const [emailerr,setemailerr]=useState("");
             <h3>Or</h3>
          
     <button type="button" className="googlebtn" onClick={googleuser}><img src="https://img.icons8.com/fluent/48/000000/google-logo.png" alt="Google" /> <p>Signup with Google</p></button>
-    <button  type="button" id="signup">Already have an account? Signin</button>
+    <button  type="button" id="signup"> <Link to="/" id="signup">Already have an account? Signin </Link></button>
     </div>
     </form>
   <div className="footer">
