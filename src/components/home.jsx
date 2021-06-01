@@ -31,50 +31,11 @@ export default function Home(props) {
 
 
 
-    const sortchat = (data) => {
-        let newarray = [];
-        let notfound = true;
-        data.forEach(ele => {
 
-            for (var i = 0; i < newarray.length; i++) {
-                var a = newarray[i];
-                if (ele.uids[0] === props.user.uid) {
-                    if (ele.uids[1] === a[0].uids[1] || ele.uids[1] === a[0].uids[0]) {
-                        a.push(ele);
-                        notfound = false;
-                        break;
-                    } else { notfound = true; }
-                } else {
-                    if (ele.uids[0] === a[0].uids[1] || ele.uids[0] === a[0].uids[0]) {
-                        a.push(ele);
-                        notfound = false;
-                        break;
-                    } else notfound = true;
-                }
-            }
-            if (notfound) {
-                newarray.push([ele]);
-            }
-
-
-        });
-
-
-        setallchat(prevchat=>{
-            oldchat.current=prevchat;
-         return newarray});
-
-        if (rightindex.current !== -1) {
-
-            setrightchats(newarray[rightindex.current])
-        }
-
-  
-
-    }
 
     
     useEffect(() => {
+
         if(Notification.permission==="default"){
             Notification.requestPermission();
          }
@@ -87,7 +48,43 @@ export default function Home(props) {
             query.forEach((element) => {
                 a.push(element.data())
             });
-            sortchat([...a]);
+        
+            let newarray = [];
+            let notfound = true;
+            a.forEach(ele => {
+    
+                for (var i = 0; i < newarray.length; i++) {
+                    var a = newarray[i];
+                    if (ele.uids[0] === props.user.uid) {
+                        if (ele.uids[1] === a[0].uids[1] || ele.uids[1] === a[0].uids[0]) {
+                            a.push(ele);
+                            notfound = false;
+                            break;
+                        } else { notfound = true; }
+                    } else {
+                        if (ele.uids[0] === a[0].uids[1] || ele.uids[0] === a[0].uids[0]) {
+                            a.push(ele);
+                            notfound = false;
+                            break;
+                        } else notfound = true;
+                    }
+                }
+                if (notfound) {
+                    newarray.push([ele]);
+                }
+    
+    
+            });
+    
+    
+            setallchat(prevchat=>{
+                oldchat.current=prevchat;
+             return newarray});
+    
+            if (rightindex.current !== -1) {
+    
+                setrightchats(newarray[rightindex.current])
+            }
           
         }, () => {
 
