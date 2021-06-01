@@ -5,7 +5,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import Signin from './components/signin';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route ,Redirect
 } from 'react-router-dom';
