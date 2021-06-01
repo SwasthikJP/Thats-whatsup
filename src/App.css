@@ -193,7 +193,7 @@ margin-bottom: 5%;
 right: 2%;
 top: 35%;
 bottom: 0%;
-color: rgb(150, 150, 150);
+color: rgb(196, 196, 196);
 font-size: smaller;
 }
 
@@ -205,7 +205,7 @@ font-size: smaller;
 .time3{
   font-size: smaller;
   margin: 0 6px;
-  color: rgb(150, 150, 150);
+  color: rgb(189, 188, 188);
 }
 
 .profilechat2{
@@ -243,7 +243,7 @@ justify-content: center;
 
 .username{
   font-weight: bold;
-  color: wheat;
+  color: whitesmoke;
 }
 
 .username2{
@@ -258,7 +258,7 @@ cursor: pointer;
 }
 
 .sidemessage{
-  color: #C6C6C6;
+  color: #e9e7e7;
   font-size: small;
 }
 
@@ -322,6 +322,7 @@ overflow-y: scroll;
   text-align: left;
 padding:  4px 10px;
 border-radius: 0.5vw;
+color: whitesmoke;
 }
 
 

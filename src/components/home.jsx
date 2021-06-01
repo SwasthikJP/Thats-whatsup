@@ -27,7 +27,7 @@ export default function Home(props) {
     const [searchlist, setsearchlist] = useState([]);
     const docid = useRef("");
     const rightindex = useRef(-1);
-
+    const oldchat=useRef([]);
 
 
 
@@ -47,7 +47,6 @@ export default function Home(props) {
                 } else {
                     if (ele.uids[0] === a[0].uids[1] || ele.uids[0] === a[0].uids[0]) {
                         a.push(ele);
-
                         notfound = false;
                         break;
                     } else notfound = true;
@@ -61,7 +60,9 @@ export default function Home(props) {
         });
 
 
-        setallchat(newarray);
+        setallchat(prevchat=>{
+            oldchat.current=prevchat;
+         return newarray});
 
         if (rightindex.current !== -1) {
 
@@ -72,30 +73,30 @@ export default function Home(props) {
 
     }
 
-    const stream = () => {
-        var db = firebase.firestore();
-        return db.collection("Allchats").where("uids", "array-contains", props.user.uid).orderBy("time", "asc")
-            .onSnapshot((query) => {
-                var a = [];
-                query.forEach((element) => {
-                    a.push(element.data())
-                });
-                sortchat([...a]);
-            }, () => {
-
-            })
-
-
-    }
-
+    
     useEffect(() => {
+        if(Notification.permission==="default"){
+            Notification.requestPermission();
+         }
+         var db = firebase.firestore();
+         
+        var unsubscribe1 = db.collection("Allchats").where("uids", "array-contains", props.user.uid).orderBy("time", "asc")
+        .onSnapshot((query) => {
 
-        var unsubscribe1 = stream();
+            var a = [];
+            query.forEach((element) => {
+                a.push(element.data())
+            });
+            sortchat([...a]);
+          
+        }, () => {
+
+        });
         return () => {
             unsubscribe1();
         }
 
-    }, [props.user]);
+    },[props.user] );
 
     useEffect(() => {
         var db = firebase.firestore();
@@ -134,6 +135,8 @@ export default function Home(props) {
                         })
                     }
                 }
+               
+              
 
                 setuersinfo(ar);
             })
@@ -148,7 +151,52 @@ export default function Home(props) {
 
             unsubscribe2();
         }
-    }, []);
+    }, [props.user]);
+
+    useEffect(()=>{
+
+        
+
+    if(oldchat.current.length!==0 && Notification.permission==="granted" && document.hidden){
+        if(allchat.length>oldchat.current.length){
+    
+        if(allchat[allchat.length-1][0].uids[0]!==props.user.uid){
+            var user=usersinfo.find((us)=>{
+                    return allchat[allchat.length-1][0].uids[0]===us.uid;
+                // }
+            })
+
+        new Notification(user.displayName,{
+              body:allchat[allchat.length-1][0].message,
+              icon:user.photoURL,
+          });
+        }
+        }else{
+allchat.forEach((ele,index)=>{
+  
+if( ele.length>oldchat.current[index].length && ele[ele.length-1].uids[0]!==props.user.uid){
+
+    var user=usersinfo.find((us)=>{
+        // if (ele[0].uids[0] === props.user.uid){
+        //    return ele[0].uids[1]===us.uid;
+        // }else{
+            return ele[ele.length-1].uids[0]===us.uid;
+        // }
+    })
+
+new Notification(user.displayName,{
+      body:ele[ele.length-1].message,
+      icon:user.photoURL,
+  });
+}
+
+})
+        }
+    }
+
+
+
+    },[allchat,props.user,usersinfo]);
 
 
     const toggle = (val) => {

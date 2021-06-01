@@ -1,7 +1,8 @@
 import Home from './components/home'
 import './App.css';
 import Signup from './components/signup';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import Signin from './components/signin';
 import {
   BrowserRouter as Router,
@@ -26,7 +27,7 @@ const [user,setuser]=useState(null);
 
 useEffect(()=>{
 firebase.auth().onAuthStateChanged((user)=>{
-console.log(user);
+
   setuser(user);
 })
 },[]);
