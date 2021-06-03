@@ -106,7 +106,7 @@ export default function Rightchat(props) {
           <p className="online" style={{ color: 'lightgreen' }}>{props.curuser.ison ? "online" : "offline"}</p>
         </div>
       </div>
-      <div className="totalchat" >
+      <div className="totalchat" style={{height:"73vh"}} >
 
         {writechat()}
 
@@ -114,7 +114,7 @@ export default function Rightchat(props) {
 
 
       </div>
-      <form onSubmit={sendchat} style={{ position: "fixed", bottom: "0" }}>
+      <form onSubmit={sendchat} >
         <div className="messagetype" style={{ height: "7vh" }}>
 
           <div className="typebox">
