@@ -316,13 +316,35 @@ overflow-y: scroll;
 }
 
 .chat{
-  max-width: 49%;
+  max-width: 100%;
   font-size: smaller;
   margin-bottom: 0;
   text-align: left;
 padding:  4px 10px;
 border-radius: 0.5vw;
 color: whitesmoke;
+cursor: pointer;
+}
+
+.deletebutton,.deletebutton:hover{
+  background-color: transparent;
+display: none;
+ cursor: pointer;
+ position: absolute;
+ right: 100%;
+
+ top: 0%;
+ bottom: 0%;
+}
+
+.hoverthis{
+  max-width: 80%;
+  position: relative;
+}
+
+.hoverthis:hover .deletebutton{
+display: inline-block;
+
 }
 
 
@@ -330,7 +352,6 @@ color: whitesmoke;
 .messagetype{
   background-color:#5A585B;
   width: 100%;
-  /* height: 9%; */
   height: 100%;
   display: flex;
   flex-direction: row;
@@ -542,3 +563,19 @@ bottom: 3%;
 }
 
 
+::-webkit-scrollbar{
+  width: 10px;
+}
+
+::-webkit-scrollbar-track{
+  background-color: #C6C6C6;
+
+}
+
+::-webkit-scrollbar-thumb{
+  background-color: rgb(145, 141, 141);
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background-color:#5A585B;
+}

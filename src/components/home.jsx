@@ -30,9 +30,6 @@ export default function Home(props) {
     const oldchat=useRef([]);
 
 
-
-
-
     
     useEffect(() => {
 
@@ -46,7 +43,7 @@ export default function Home(props) {
 
             var a = [];
             query.forEach((element) => {
-                a.push(element.data())
+                a.push({...element.data(),id:element.id})
             });
         
             let newarray = [];
@@ -79,10 +76,13 @@ export default function Home(props) {
     
             setallchat(prevchat=>{
                 oldchat.current=prevchat;
+                if(prevchat.length>newarray.length){
+                    rightindex.current=-1;
+                    setisrightchat(0)
+                }
              return newarray});
     
             if (rightindex.current !== -1) {
-    
                 setrightchats(newarray[rightindex.current])
             }
           
@@ -133,9 +133,16 @@ export default function Home(props) {
                     }
                 }
                
-              
-
+          if(rightindex.current!==-1){
+       setcuruser(prevuser=>{
+        var cur = ar.find((ele) => {
+            return ele.uid === prevuser.uid;
+        });
+        return cur;
+       })
+          }
                 setuersinfo(ar);
+
             })
 
         return () => {
@@ -372,9 +379,8 @@ new Notification(user.displayName,{
                         var curuser = usersinfo.find((ele) => {
                             return ele.uid === (chat[0].uids[0] === props.user.uid ? chat[0].uids[1] : chat[0].uids[0]);
                         }) || "User not found";
-
-
-
+  
+                  
                         return <div className="profilechat" onClick={() => { rightchaton(chat, index, curuser) }}
                             style={{ border: rightindex.current === index ? "2px solid gray" : "none" , backgroundColor: rightindex.current === index ? "#5a5a5a" : "#444444" }}
                             key={curuser.uid || index} >
