@@ -57,7 +57,7 @@ const [emailerr,setemailerr]=useState("");
      
         var reg= /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       
-        if(!reg.test(e.target.value)|| e.target.value.length!==0){
+        if(!(reg.test(e.target.value)|| e.target.value.length===0)){
             setemailerr("Enter valid email");
             setinemail(false)
         }else{setinemail(true)}
