@@ -4,6 +4,7 @@ import 'firebase/firestore';
 import 'firebase/auth';
 import 'firebase/storage';
 import {isMobile} from 'react-device-detect';
+import profilepic from '../images/prifile.jpg';
 
 export default function Setting(props) {
 
@@ -97,7 +98,7 @@ if(isMobile){
         <div className="profilechat profilechat2"style={{height:"10vh"}}>
             <div className=" userandtext userandtext2">
                 <input ref={inputref} type="file" name="imagefile" id="imagefile" accept="image/*" onChange={(e)=>{localphoto(e)}}/>
-                <img style={{border:onchangepic}} ref={imgref} src={props.user.photoURL} alt="profle" id="profilepic" onClick={()=>{inputref.current.click();}}/>
+                <img style={{border:onchangepic}} ref={imgref} src={props.user.photoURL||profilepic} alt="profle" id="profilepic" onClick={()=>{inputref.current.click();}}/>
                 <button className="username username2" onClick={uploadphoto}>Change profilepicture</ button>
         
             </div>
@@ -143,7 +144,7 @@ if(isMobile){
         <div className="profilechat profilechat2">
             <div className=" userandtext userandtext2">
                 <input ref={inputref} type="file" name="imagefile" id="imagefile" accept="image/*" onChange={(e)=>{localphoto(e)}}/>
-                <img style={{border:onchangepic}} ref={imgref} src={props.user.photoURL} alt="profle" id="profilepic" onClick={()=>{inputref.current.click();}}/>
+                <img style={{border:onchangepic}} ref={imgref} src={props.user.photoURL||profilepic} alt="profle" id="profilepic" onClick={()=>{inputref.current.click();}}/>
                 <button className="username username2" onClick={uploadphoto}>Change profilepicture</ button>
         
             </div>

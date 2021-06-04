@@ -170,9 +170,9 @@ export default function Home(props) {
                 // }
             })
 
-        new Notification(user.displayName,{
+        new Notification(user.displayName||user.email,{
               body:allchat[allchat.length-1][0].message,
-              icon:user.photoURL,
+              icon:user.photoURL||profilepic,
           });
         }
         }else{
@@ -188,9 +188,9 @@ if( ele.length>oldchat.current[index].length && ele[ele.length-1].uids[0]!==prop
         // }
     })
 
-new Notification(user.displayName,{
+new Notification(user.displayName||user.email,{
       body:ele[ele.length-1].message,
-      icon:user.photoURL,
+      icon:user.photoURL||profilepic,
   });
 }
 
@@ -287,9 +287,9 @@ new Notification(user.displayName,{
                                 return <div className="profilechat"
                                     onClick={() => gotochat(val)}
                                     key={val.uid || index} >
-                                    <img className="profilephoto" src={val.photoURL} alt="userprofile" />
+                                    <img className="profilephoto" src={val.photoURL||profilepic} alt="userprofile" />
                                     <div className="userandtext userandtext3">
-                                        <p className="username" style={{ fontSize: "large" }}>{val.displayName}</p>
+                                        <p className="username" style={{ fontSize: "large" }}>{val.displayName||val.email}</p>
                                         {/* <p className="sidemessage">{chat[chat.length - 1].message}</p> */}
                                     </div>
                                 </div>
@@ -306,9 +306,9 @@ new Notification(user.displayName,{
                                 return <div className="profilechat" onClick={() => { rightchaton(chat, index, curuser) }}
                                     style={{ border: rightindex.current === index ? "2px solid grey" : "none" , backgroundColor: rightindex.current === index ? "#5a5a5a" : "#444444" }}
                                     key={curuser.uid || index} >
-                                    <img className="profilephoto" src={curuser.photoURL} alt="userprofile" />
+                                    <img className="profilephoto" src={curuser.photoURL||profilepic} alt="userprofile" />
                                     <div className="userandtext">
-                                        <p className="username">{curuser.displayName}</p>
+                                        <p className="username">{curuser.displayName||curuser.email}</p>
                                         <p className="sidemessage">{chat[chat.length - 1].message}</p>
                                     </div>
                                     <p className="time">{timeconvert(chat[chat.length - 1])}</p>
@@ -366,9 +366,9 @@ new Notification(user.displayName,{
                         return <div className="profilechat"
                             onClick={() => gotochat(val)}
                             key={val.uid || index} >
-                            <img className="profilephoto" src={val.photoURL} alt="userprofile" />
+                            <img className="profilephoto" src={val.photoURL||profilepic} alt="userprofile" />
                             <div className="userandtext userandtext3">
-                                <p className="username" style={{ fontSize: "large" }}>{val.displayName}</p>
+                                <p className="username" style={{ fontSize: "large" }}>{val.displayName||val.email}</p>
                                 {/* <p className="sidemessage">{chat[chat.length - 1].message}</p> */}
                             </div>
                         </div>
@@ -384,9 +384,9 @@ new Notification(user.displayName,{
                         return <div className="profilechat" onClick={() => { rightchaton(chat, index, curuser) }}
                             style={{ border: rightindex.current === index ? "2px solid gray" : "none" , backgroundColor: rightindex.current === index ? "#5a5a5a" : "#444444" }}
                             key={curuser.uid || index} >
-                            <img className="profilephoto" src={curuser.photoURL} alt="userprofile" />
+                            <img className="profilephoto" src={curuser.photoURL || profilepic} alt="userprofile" />
                             <div className="userandtext">
-                                <p className="username">{curuser.displayName}</p>
+                                <p className="username">{curuser.displayName||curuser.email}</p>
                                 <p className="sidemessage">{chat[chat.length - 1].message}</p>
                             </div>
                             <p className="time">{timeconvert(chat[chat.length - 1])}</p>

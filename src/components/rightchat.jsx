@@ -5,6 +5,7 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import date from 'date-and-time';
 import { isMobile } from 'react-device-detect';
+import profilepic from '../images/prifile.jpg';
 
 
 export default function Rightchat(props) {
@@ -100,9 +101,9 @@ export default function Rightchat(props) {
     return <div className="rightchat" style={{ width: "100vw" }}>
 
       <div className="menu">
-        <img className="profilephoto" style={{ marginRight: "4%" }} src={props.curuser.photoURL} alt="user profile" />
+        <img className="profilephoto" style={{ marginRight: "4%" }} src={props.curuser.photoURL||profilepic} alt="user profile" />
         <div className="userandtext">
-          <p className="username">{props.curuser.displayName}</p>
+          <p className="username">{props.curuser.displayName||props.curuser.email}</p>
           <p className="online" style={{ color: 'lightgreen' }}>{props.curuser.ison ? "online" : "offline"}</p>
         </div>
       </div>
@@ -130,9 +131,9 @@ export default function Rightchat(props) {
 
   return <div className="rightchat">
     <div className="menu">
-      <img className="profilephoto" style={{ marginRight: "4%" }} src={props.curuser.photoURL} alt="user profile" />
+      <img className="profilephoto" style={{ marginRight: "4%" }} src={props.curuser.photoURL||profilepic} alt="user profile" />
       <div className="userandtext">
-        <p className="username">{props.curuser.displayName}</p>
+        <p className="username">{props.curuser.displayName||props.curuser.email}</p>
         <p className="online" style={{ color: 'lightgreen' }}>{props.curuser.ison ? "online" : "offline"}</p>
       </div>
     </div>
