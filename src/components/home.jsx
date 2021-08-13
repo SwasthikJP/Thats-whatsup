@@ -167,7 +167,7 @@ export default function Home(props) {
         if(allchat[allchat.length-1][0].uids[0]!==props.user.uid){
             var user=usersinfo.find((us)=>{
                     return allchat[allchat.length-1][0].uids[0]===us.uid;
-                // }
+               
             })
 
         new Notification(user.displayName||user.email,{
@@ -197,8 +197,6 @@ new Notification(user.displayName||user.email,{
 })
         }
     }
-
-
 
     },[allchat,props.user,usersinfo]);
 
